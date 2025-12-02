@@ -11,4 +11,7 @@ galaxy_info:
     - name: ArchLinux
       versions:
         - all
+    - name: Gentoo
+      versions:
+        - all
   galaxy_tags: []

@@ -7,4 +7,5 @@
         update_cache: yes
         upgrade: yes
       become: yes
+      # TODO: include emerge (from gentoo)
       when: ansible_facts['pkg_mgr'] in ['apt', 'pacman']

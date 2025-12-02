@@ -6,6 +6,7 @@
     state: absent
     force: yes
   become: yes
+  # TODO: do the equiviant of this for Gentoo
   when: ansible_facts["os_family"] == 'Archlinux'
 
 - name: Install incus

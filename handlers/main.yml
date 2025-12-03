@@ -1,7 +1,21 @@
 ---
-- name: Restart incus
+- name: Restart incus on most systems
   ansible.builtin.service:
     name: incus
     state: restarted
   listen: restart_incus
   become: yes
+  when: ansible_facts.service_mgr != "s6-svscan"
+
+- name: Stop incus s6 service
+  command: s6-rc -d change incus
+  listen: restart_incus
+  become: yes
+  when: ansible_facts.service_mgr == "s6-svscan"
+
+- name: Start incus s6 service
+  command: s6-rc -u change incus
+  listen: restart_incus
+  become: yes
+  when: ansible_facts.service_mgr == "s6-svscan"
+

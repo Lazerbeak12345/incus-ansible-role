@@ -8,6 +8,7 @@ driver:
   name: podman
 platforms:
   # TODO: check against Gentoo
+  # TODO: check against artix-s6
   - name: mol-incus-arch
     image: docker.io/gliech/docker-archlinux-ansible:branch-master
     pre_build_image: true

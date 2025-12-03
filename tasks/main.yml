@@ -27,12 +27,32 @@
 - name: Reload user groups
   ansible.builtin.meta: reset_connection
 
-- name: Start incus service
+- name: Start incus service on most systems
   ansible.builtin.service:
     name: incus
     state: started
     enabled: yes
   become: yes
+  when: ansible_facts.service_mgr != "s6-svscan"
+
+# TODO: test on other s6 systems
+# TODO: install the s6 service files too
+- name: Start incus service on s6 systems
+  when: ansible_facts.service_mgr == "s6-svscan"
+  block:
+    - name: Enable incus service on s6-svscan
+      file:
+        path: /etc/s6/adminsv/default/contents.d/incus
+        state: touch
+      become: yes
+
+    - name: Refresh s6 db for incus service on s6-svscan
+      command: s6-db-reload
+      become: yes
+
+    - name: Start incus service on s6-svscan
+      command: s6-rc -u change incus
+      become: yes
 
 - name: Get old incus config
   ansible.builtin.command:

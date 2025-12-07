@@ -1,3 +1,16 @@
+## [1.0.4](https://github.com/gliech/incus-ansible-role/compare/v1.0.3...v1.0.4) (2025-12-07)
+
+
+### Bug Fixes
+
+* new syntax for ansible facts ([26a76a1](https://github.com/gliech/incus-ansible-role/commit/26a76a1414bfbf789c62212d8eb540b51e523bb5))
+* use generic service module instead of systemd ([7150359](https://github.com/gliech/incus-ansible-role/commit/715035905f42aa0f3ddcf18b7f95fc3a38d8d522)), closes [#3](https://github.com/gliech/incus-ansible-role/issues/3)
+
+
+### Documentation
+
+* **fix:** typo incus instead of incus_extra_users in role variable documentation [resolves [#1](https://github.com/gliech/incus-ansible-role/issues/1)] ([5a5ed0f](https://github.com/gliech/incus-ansible-role/commit/5a5ed0f115a0ffaed648b55e20e0d40e0f9ec3d3))
+
 ## [1.0.3](https://github.com/gliech/incus-ansible-role/compare/v1.0.2...v1.0.3) (2024-04-13)
 
 

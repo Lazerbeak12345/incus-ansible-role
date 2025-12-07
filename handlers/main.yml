@@ -1,7 +1,7 @@
 ---
 - name: Restart incus
-  ansible.builtin.systemd:
-    name: incus.service
+  ansible.builtin.service:
+    name: incus
     state: restarted
   listen: restart_incus
   become: yes

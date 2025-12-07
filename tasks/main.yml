@@ -27,8 +27,8 @@
   ansible.builtin.meta: reset_connection
 
 - name: Start incus service
-  ansible.builtin.systemd:
-    name: incus.service
+  ansible.builtin.service:
+    name: incus
     state: started
     enabled: yes
   become: yes

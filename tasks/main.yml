@@ -6,7 +6,7 @@
     state: absent
     force: yes
   become: yes
-  when: ansible_os_family == 'Archlinux'
+  when: ansible_facts["os_family"] == 'Archlinux'
 
 - name: Install incus
   ansible.builtin.package:
@@ -16,11 +16,11 @@
 
 - name: Add users to incus-admin group
   ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
+    name: "{{ ansible_facts['user_id'] }}"
     groups:
       - incus-admin
     append: yes
-  loop: "{{ [ansible_user_id] | union(incus_extra_users) }}"
+  loop: "{{ [ansible_facts['user_id']] | union(incus_extra_users) }}"
   become: yes
 
 - name: Reload user groups
